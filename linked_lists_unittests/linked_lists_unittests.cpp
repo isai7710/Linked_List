@@ -85,14 +85,15 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsValidI
     EXPECT_EQ(preBuiltList.contains(2), true);
 }
 
-TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsAnotherValidItem_ExpectToReturnTrue){
-    EXPECT_EQ(preBuiltList.contains(1), true);
-}
-
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsInvalidItem_ExpectToReturnFalse){
     EXPECT_EQ(preBuiltList.contains(7), false);
 }
 
-TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsAnotherInvalidItem_ExpectToReturnFalse){
-    EXPECT_EQ(preBuiltList.contains(10), false);
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingOccurrenceOfValue_ExpectCorrectCount){
+    EXPECT_EQ(preBuiltList.count(1), 1);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltListWithAppendedValue_WhenCheckingOccurrenceOfValue_ExpectCorrectCount){
+    preBuiltList.append(1);
+    EXPECT_EQ(preBuiltList.count(1), 2);
 }

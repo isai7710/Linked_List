@@ -177,6 +177,21 @@ public:
         }
         return false;
     }
+    // Count the number of occurrences of a specific value in the list.
+    int count(const T &value) const {
+        if(!head){
+            return 0;
+        }
+        Node *current = head;
+        int count = 0;
+        while(current){
+            if (current->data == value){
+                count++;
+            }
+            current = current->next;
+        }
+        return count;
+    }
     /*
     TODO:
     T& front() const: Get a reference to the first element in the list.
