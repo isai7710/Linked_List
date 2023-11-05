@@ -85,6 +85,10 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsValidI
     EXPECT_EQ(preBuiltList.contains(2), true);
 }
 
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsAnotherValidItem_ExpectToReturnTrue){
+    EXPECT_EQ(preBuiltList.contains(1), true);
+}
+
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsInvalidItem_ExpectToReturnFalse){
     EXPECT_EQ(preBuiltList.contains(7), false);
 }
