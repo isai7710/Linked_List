@@ -97,3 +97,8 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltListWithAppendedValue_WhenCheckin
     preBuiltList.append(1);
     EXPECT_EQ(preBuiltList.count(1), 2);
 }
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltListWithAnotherAppendedValue_WhenCheckingOccurrenceOfValue_ExpectCorrectCount){
+    preBuiltList.append(2);
+    EXPECT_EQ(preBuiltList.count(2), 2);
+}
