@@ -166,12 +166,22 @@ public:
 
         return backValue;
     }
+    // Check if a specific value is present in the list.
+    bool contains(const T &value) const {
+        Node* current = head;
+        while(current){
+            if(current->data == value){
+                return true;
+            }
+            current = current->next;
+        }
+        return false;
+    }
     /*
     TODO:
     T& front() const: Get a reference to the first element in the list.
     T& back() const: Get a reference to the last element in the list.
     int size() const: Get the number of elements in the list.
-    bool contains(const T &value) const: Check if a specific value is present in the list.
     int count(const T &value) const: Count the number of occurrences of a specific value in the list.
     void reverse(): Reverse the order of elements in the list.
     T& operator[](int index): Access elements in the list by index.

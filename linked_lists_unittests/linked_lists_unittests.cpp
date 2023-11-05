@@ -81,3 +81,10 @@ TEST(SLLPopBack, GivenAListWith2Values_WhenBackIsPopped_ExpectCorrectReturnValue
     EXPECT_EQ(list.size(), 1);
 }
 
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsValidItem_ExpectToReturnTrue){
+    EXPECT_EQ(preBuiltList.contains(2), true);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsInvalidItem_ExpectToReturnFalse){
+    EXPECT_EQ(preBuiltList.contains(7), false);
+}
