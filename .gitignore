@@ -1,0 +1,13 @@
+# Ignore build directory
+/build/
+
+# Ignore external/googletest directory
+/external/googletest/
+
+# Ignore files generated during the build process
+*.o
+*.a
+*.so
+*.exe
+/CMakeFiles/
+/CMakeCache.txt
