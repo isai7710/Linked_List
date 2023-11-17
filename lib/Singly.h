@@ -196,8 +196,6 @@ public:
     TODO:
     T& front() const: Get a reference to the first element in the list.
     T& back() const: Get a reference to the last element in the list.
-    int size() const: Get the number of elements in the list.
-    int count(const T &value) const: Count the number of occurrences of a specific value in the list.
     void reverse(): Reverse the order of elements in the list.
     T& operator[](int index): Access elements in the list by index.
     void sort(): Sort the elements in the list.
@@ -205,15 +203,13 @@ public:
     Singly<T> copy() const: Create a copy of the list.
     bool equals(const Singly<T> &other) const: Compare two lists for equality.
     */
+   // Get the number of elements in the list.
     int size() const {
-        if(!head){
-            return 0;
-        }
+        int size = 0;
         Node* current = head;
-        int size = 1;
-        while(current->next){
-            size++;
+        while(current){
             current = current->next;
+            size++;
         }
         return size;
     }
