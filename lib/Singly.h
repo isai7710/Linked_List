@@ -192,11 +192,14 @@ public:
         }
         return count;
     }
+    // Reverse the order of elements in the list.
+    void reverse() {
+        
+    }
     /*
     TODO:
     T& front() const: Get a reference to the first element in the list.
     T& back() const: Get a reference to the last element in the list.
-    void reverse(): Reverse the order of elements in the list.
     T& operator[](int index): Access elements in the list by index.
     void sort(): Sort the elements in the list.
     void remove_duplicates(): Remove duplicate elements from the list.
