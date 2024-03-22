@@ -11,9 +11,3 @@ add_subdirectory(external/googletest)
 
 # Include Unit Test directory:
 add_subdirectory(linked_lists_unittests)
-
-# Include main project source code directory:
-add_subdirectory(src)
-
-
-
