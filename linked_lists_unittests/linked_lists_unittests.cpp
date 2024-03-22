@@ -34,6 +34,15 @@ TEST(SLLIsEmpty, GivenAnEmptyList_WhenExecutingIsEmptyFunction_ExpectTrue){
     EXPECT_EQ(list.is_empty(), true);
 }
 
+TEST(SLLPopBack, GivenAListWith2Values_WhenPopBackisExecuted_ExpectCorrectReturnValueandSize){
+    Singly<int> list;
+    list.append(1);
+    list.append(2);
+
+    EXPECT_EQ(list.pop_back(), 2);
+    EXPECT_EQ(list.size(), 1);
+}
+
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingSize_ExpectCorrectValue){
     EXPECT_EQ(preBuiltList.size(), 3);
 }
@@ -70,15 +79,6 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenFrontIsPopped_ExpectCorr
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenBackIsPopped_ExpectCorrectReturnValueandSize){
     EXPECT_EQ(preBuiltList.pop_back(), 3);
     EXPECT_EQ(preBuiltList.size(), 2);
-}
-
-TEST(SLLPopBack, GivenAListWith2Values_WhenBackIsPopped_ExpectCorrectReturnValueandSize){
-    Singly<int> list;
-    list.append(1);
-    list.append(2);
-
-    EXPECT_EQ(list.pop_back(), 2);
-    EXPECT_EQ(list.size(), 1);
 }
 
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingIfContainsValidItem_ExpectToReturnTrue){
