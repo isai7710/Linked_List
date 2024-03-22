@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "Singly.h"
+#include "../src/Singly.h"
 
 // SLL = Singly Linked List
 class PreBuiltSinglyLinkedList: public testing::Test{
@@ -32,6 +32,13 @@ TEST(SLLIsEmpty, GivenAnEmptyList_WhenExecutingIsEmptyFunction_ExpectTrue){
     Singly<int> list;
 
     EXPECT_EQ(list.is_empty(), true);
+}
+
+TEST(SLLIsEmpty, GivenANonEmptyList_WhenExecutingIsEmptyFunction_ExpectFalse){
+    Singly<int> list;
+    list.append(1);
+
+    EXPECT_EQ(list.is_empty(), false);
 }
 
 TEST(SLLPopBack, GivenAListWith2Values_WhenPopBackisExecuted_ExpectCorrectReturnValueandSize){

@@ -1,13 +1,13 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 
-project(linked_lists LANGUAGES CXX)
+project(Linked_List LANGUAGES CXX)
 
-# Include Singly Linked List Library:
-add_subdirectory(lib)
+# Include Linked List Library source files:
+add_subdirectory(src)
 
 # Include Google Test:
 add_subdirectory(external/googletest)
 
 # Include Unit Test directory:
-add_subdirectory(linked_lists_unittests)
+add_subdirectory(unit_tests)

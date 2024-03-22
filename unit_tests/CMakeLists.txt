@@ -1,7 +1,9 @@
-set(This linked_lists_unittests)
-add_executable(${This} linked_lists_unittests.cpp)
+# Define source files and executable for unit tests
+set(TEST_SOURCES singly_linked_list_unit_tests.cpp)
 
-target_link_libraries(${This} PRIVATE GTest::gtest_main Singly)
+# Create executable target
+add_executable(sll_unit_tests ${TEST_SOURCES})
 
-include(GoogleTest)
-gtest_discover_tests(${This})
+# Link with googletest and your Linked List library
+target_link_libraries(sll_unit_tests PRIVATE gtest gtest_main linked_list_library)
+
