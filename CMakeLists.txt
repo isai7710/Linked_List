@@ -3,7 +3,17 @@ set(CMAKE_CXX_STANDARD 17)
 
 project(linked_lists LANGUAGES CXX)
 
-add_subdirectory(src)
+# Include Singly Linked List Library:
 add_subdirectory(lib)
-add_subdirectory(external)
+
+# Include Google Test:
+add_subdirectory(external/googletest)
+
+# Include Unit Test directory:
 add_subdirectory(linked_lists_unittests)
+
+# Include main project source code directory:
+add_subdirectory(src)
+
+
+
