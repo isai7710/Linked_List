@@ -174,7 +174,7 @@ public:
     }
 
     // consider the case if there are multiple of the same item we would like to insert after, how would the function parameters differ and would there be any change to the logic?
-    void insert_after(const T &value_to_insert, const T &value_to_insert_after) {
+    void insert_after(const T &value_to_insert_after, const T &value_to_insert) {
         if (!head) {
             std::cout << "List is empty, value to insert will now be appended as first value in list..." << std::endl;
             append(value_to_insert);
@@ -193,7 +193,7 @@ public:
         std::cout << "Item '" << value_to_insert_after << "' not found in the list. Insertion failed." << std::endl;
     }
 
-    void insert_before(const T &value_to_insert, const T &value_to_insert_before) {
+    void insert_before(const T &value_to_insert_before, const T &value_to_insert) {
         if (!head) {
             std::cout << "List is empty, item to insert will now be appended as first item in list..." << std::endl;
             append(value_to_insert);

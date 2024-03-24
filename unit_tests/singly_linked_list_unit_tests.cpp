@@ -114,3 +114,23 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAppendingValueandCheckin
     preBuiltList.append(1);
     EXPECT_EQ(preBuiltList.count(1), 2);
 }
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingAfterValidItem_ExpectCorrectSize){
+    preBuiltList.insert_after(2, 11);
+    EXPECT_EQ(preBuiltList.size(), 4);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingAfterInvalidItem_ExpectCorrectSize){
+    preBuiltList.insert_after(4, 11);
+    EXPECT_EQ(preBuiltList.size(), 3);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingBeforeValidItem_ExpectCorrectSize){
+    preBuiltList.insert_before(2, 11);
+    EXPECT_EQ(preBuiltList.size(), 4);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingBeforeInvalidItem_ExpectCorrectSize){
+    preBuiltList.insert_before(4, 11);
+    EXPECT_EQ(preBuiltList.size(), 3);
+}
