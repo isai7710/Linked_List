@@ -50,6 +50,20 @@ TEST(SLLPopBack, GivenAListWith2Values_WhenPopBackisExecuted_ExpectCorrectReturn
     EXPECT_EQ(list.size(), 1);
 }
 
+TEST(SLLPopFront, GivenAListWith2Values_WhenPopFrontisExecuted_ExpectCorrectReturnValueandSize){
+    Singly<int> list;
+    list.append(1);
+    list.append(2);
+
+    EXPECT_EQ(list.pop_front(), 1);
+    EXPECT_EQ(list.size(), 1);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAppendingValue_ExpectCorrectSize){
+    preBuiltList.append(4);
+    EXPECT_EQ(preBuiltList.size(), 4);
+}
+
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingSize_ExpectCorrectValue){
     EXPECT_EQ(preBuiltList.size(), 3);
 }
@@ -59,22 +73,8 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenExecutingClearAll_Expect
     EXPECT_EQ(preBuiltList.is_empty(), true);
 }
 
-TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_ExpectCorrectSize){
-    EXPECT_EQ(preBuiltList.size(), 3);
-}
-
-TEST_F(PreBuiltSinglyLinkedList, GivenAListWith3AppendedValues_WhenItemRemoved_ExpectCorrectSize){
-    preBuiltList.remove_item(2);
-    EXPECT_EQ(preBuiltList.size(), 2);
-}
-
-TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenItemToRemoveIsNotValid_ExpectCorrectSize){
-    preBuiltList.remove_item(4);
-    EXPECT_EQ(preBuiltList.size(), 3);
-}
-
-TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenTailRemoved_ExpectCorrectSize){
-    preBuiltList.remove_tail();
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenBackIsPopped_ExpectCorrectReturnValueandSize){
+    EXPECT_EQ(preBuiltList.pop_back(), 3);
     EXPECT_EQ(preBuiltList.size(), 2);
 }
 
@@ -83,8 +83,18 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenFrontIsPopped_ExpectCorr
     EXPECT_EQ(preBuiltList.size(), 2);
 }
 
-TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenBackIsPopped_ExpectCorrectReturnValueandSize){
-    EXPECT_EQ(preBuiltList.pop_back(), 3);
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenItemtoRemoveisValid_ExpectCorrectSize){
+    preBuiltList.remove_item(2);
+    EXPECT_EQ(preBuiltList.size(), 2);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenItemtoRemoveisInvalid_ExpectCorrectSize){
+    preBuiltList.remove_item(4);
+    EXPECT_EQ(preBuiltList.size(), 3);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenTailRemoved_ExpectCorrectSize){
+    preBuiltList.remove_tail();
     EXPECT_EQ(preBuiltList.size(), 2);
 }
 
@@ -100,12 +110,7 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingOccurrenceOfValu
     EXPECT_EQ(preBuiltList.count(1), 1);
 }
 
-TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltListWithAppendedValue_WhenCheckingOccurrenceOfValue_ExpectCorrectCount){
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAppendingValueandCheckingOccurrenceOfValue_ExpectCorrectCount){
     preBuiltList.append(1);
     EXPECT_EQ(preBuiltList.count(1), 2);
-}
-
-TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltListWithAnotherAppendedValue_WhenCheckingOccurrenceOfValue_ExpectCorrectCount){
-    preBuiltList.append(2);
-    EXPECT_EQ(preBuiltList.count(2), 2);
 }

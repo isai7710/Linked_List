@@ -9,9 +9,7 @@ class Singly {
 public:
     Singly() : head(nullptr) {}
 
-    ~Singly() {
-        clear_all();
-    }
+    ~Singly() { clear_all(); }
 
     void append(const T &append_item) {
         Node* newNode = new Node(append_item);
@@ -27,29 +25,60 @@ public:
         }
     }
 
-    void insert_after(const T &insert_item, const T &after_item) {
+    int size() const {
+        int size = 0;
         Node* current = head;
-        if (!current) {
-            std::cout << "List is empty boi, item to insert will now be first item in list..." << std::endl;
-            append(insert_item);
-            return;
-        }
         while(current){
-            if (current->data == after_item){
-                Node* newNode = new Node(insert_item);
-                newNode->next = current->next;
-                current->next = newNode;
-                return;
-            }
+            current = current->next;
+            size++;
+        }
+        return size;
+    } 
+    
+    bool is_empty() const {
+        if(!head) {
+            return true;
+        }
+        return false;
+    }
+    
+    //Remove and return the last element.
+    T pop_back(){
+        if(!head){
+            std::cout << "List is empty" << std::endl;
+            return T{};
+        }
+        if(!head->next){
+            T backValue = head->data;
+            delete head;
+            head = nullptr;
+            return backValue;
+        }
+        // find second to last node
+        Node* current = head;
+        while(current->next->next){
             current = current->next;
         }
-        std::cout << "Item '" << after_item << "' not found in the list. Insertion failed." << std::endl;
+        T backValue = current->next->data;
+        Node* temp = current->next;
+        current->next = nullptr;
+        delete temp;
+
+        return backValue;
     }
-    void insert_before(const T &insert_item, const T &before_item) {
+    //Remove and return the first element.
+    T pop_front(){
         if (!head){
-            
+            std::cout << "List is empty" << std::endl;
+            return T{};
         }
+        Node* nodeToPop = head;
+        T frontValue = head->data;
+        head = head->next;
+        delete nodeToPop;
+        return frontValue;
     }
+    
     void remove_item(const T &item_to_remove) {
         // returns true if head points to null, in which case list is empty
         if (!head) {
@@ -92,6 +121,7 @@ public:
         }
 
     }
+    
     void remove_tail() {
         // the statement !head returns true if head points to null, in which case list is empty
         if (!head){
@@ -114,6 +144,80 @@ public:
         delete current->next;
         current->next = nullptr;
     }
+
+    // Check if a specific value is present in the list.
+    bool contains(const T &value) const {
+        Node* current = head;
+        while(current){
+            if(current->data == value){
+                return true;
+            }
+            current = current->next;
+        }
+        return false;
+    }
+
+    // Count the number of occurrences of a specific value in the list.
+    int count(const T &value) const {
+        if(!head){
+            return 0;
+        }
+        Node *current = head;
+        int count = 0;
+        while(current){
+            if (current->data == value){
+                count++;
+            }
+            current = current->next;
+        }
+        return count;
+    }
+
+    // consider the case if there are multiple of the same item we would like to insert after, how would the function parameters differ and would there be any change to the logic?
+    void insert_after(const T &value_to_insert, const T &value_to_insert_after) {
+        if (!head) {
+            std::cout << "List is empty, value to insert will now be appended as first value in list..." << std::endl;
+            append(value_to_insert);
+            return;
+        }
+        Node* current = head;
+        while(current){
+            if (current->data == value_to_insert_after){
+                Node* newNode = new Node(value_to_insert);
+                newNode->next = current->next;
+                current->next = newNode;
+                return;
+            }
+            current = current->next;
+        }
+        std::cout << "Item '" << value_to_insert_after << "' not found in the list. Insertion failed." << std::endl;
+    }
+
+    void insert_before(const T &value_to_insert, const T &value_to_insert_before) {
+        if (!head) {
+            std::cout << "List is empty, item to insert will now be appended as first item in list..." << std::endl;
+            append(value_to_insert);
+            return;
+        }
+        if (head->data == value_to_insert_before) {
+            Node* newNode = new Node(value_to_insert);
+            newNode->next = head;
+            head = newNode;
+            return;
+        }
+        Node* current = head;
+        while (current->next) {
+            if (current->next->data == value_to_insert_before){
+                Node* newNode = new Node(value_to_insert);
+                newNode->next = current->next;
+                current->next = newNode;
+                return;
+            }
+            current = current->next;
+        }
+        std::cout << "Item '" << value_to_insert_before << "' not found in the list. Insertion failed." << std::endl;
+    }
+
     void print_list() const {
         std::cout << "Your list:\n";
         Node* current = head;
@@ -130,72 +234,9 @@ public:
             std::cout << "Head is null, the list is empty." << std::endl;
         }
     }
-    //Remove and return the first element.
-    T pop_front(){
-        if (!head){
-            std::cout << "List is empty" << std::endl;
-            return T{};
-        }
-        Node* nodeToPop = head;
-        T frontValue = head->data;
-        head = head->next;
-        delete nodeToPop;
-        return frontValue;
-    }
-    //Remove and return the last element.
-    T pop_back(){
-        if(!head){
-            std::cout << "List is empty" << std::endl;
-            return T{};
-        }
-        if(!head->next){
-            T backValue = head->data;
-            delete head;
-            head = nullptr;
-            return backValue;
-        }
-        // find second to last node
-        Node* current = head;
-        while(current->next->next){
-            current = current->next;
-        }
-        T backValue = current->next->data;
-        Node* temp = current->next;
-        current->next = nullptr;
-        delete temp;
-
-        return backValue;
-    }
-    // Check if a specific value is present in the list.
-    bool contains(const T &value) const {
-        Node* current = head;
-        while(current){
-            if(current->data == value){
-                return true;
-            }
-            current = current->next;
-        }
-        return false;
-    }
-    // Count the number of occurrences of a specific value in the list.
-    int count(const T &value) const {
-        if(!head){
-            return 0;
-        }
-        Node *current = head;
-        int count = 0;
-        while(current){
-            if (current->data == value){
-                count++;
-            }
-            current = current->next;
-        }
-        return count;
-    }
+    
     // Reverse the order of elements in the list.
-    void reverse() {
-        
-    }
+    // void reverse() {}
     /*
     TODO:
     T& front() const: Get a reference to the first element in the list.
@@ -206,24 +247,7 @@ public:
     Singly<T> copy() const: Create a copy of the list.
     bool equals(const Singly<T> &other) const: Compare two lists for equality.
     */
-   // Get the number of elements in the list.
-    int size() const {
-        int size = 0;
-        Node* current = head;
-        while(current){
-            current = current->next;
-            size++;
-        }
-        return size;
-    }
-    bool is_empty() const {
-        if(!head){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+    
     void clear_all() {
         Node* delete_ptr;
         while(head){
@@ -238,7 +262,7 @@ private:
     {
         // Node data
         T data;
-        // Pointer to next node
+        // Pointer to a node (subsequent node in list)
         Node *next;
 
         // Constructor
