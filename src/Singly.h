@@ -218,6 +218,7 @@ public:
         std::cout << "Item '" << value_to_insert_before << "' not found in the list. Insertion failed." << std::endl;
     }
 
+    // TODO: change these to list_to_string functions to better test them
     void print_list() const {
         std::cout << "Your list:\n";
         Node* current = head;
