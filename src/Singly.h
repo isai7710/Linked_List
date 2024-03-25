@@ -13,8 +13,6 @@ public:
 
     void append(const T &item_to_append) {
         Node* new_node = new Node(item_to_append);
-        // the condition "!head" returns true if head points to null (list is empty)
-        // in which case the item to append will be the head
         if (!head){
             head = new_node;
             list_size++;
@@ -54,7 +52,6 @@ public:
             list_size--;
             return pop_back_item;
         }
-        // find second to last node
         Node* current = head;
         while(current->next->next){
             current = current->next;
@@ -68,7 +65,6 @@ public:
         return pop_back_item;
     }
 
-    // Remove and return the first item in the list
     T pop_front(){
         if (!head){
             std::cout << "List is empty" << std::endl;
@@ -84,12 +80,10 @@ public:
     }
     
     void remove(const T &item_to_remove) {
-        // returns true if head points to null, in which case list is empty
         if (!head) {
             std::cout << "List is empty"<< std::endl;
             return;
         } 
-        // check if first item in list is the item to remove
         if (head->data == item_to_remove) {
             Node* temp = head->next;
             delete head;
@@ -98,19 +92,11 @@ public:
             list_size--;
             return;
         }
-        //
         Node* current = head;
         Node* temp;
-        //draw this out as well but I will try to explain as best I can here
-        //first check if we've reached the end of the list with the 'current->next' expression if so,
-        //terminate while loop
-        //if we haven't reached the end, then check if current's following node is the node to remove, if it is
-        //terminate while loop, we've found the node to remove
         while(current->next && current->next->data != item_to_remove){
             current = current->next;
         }
-        // if we did find the item to remove (which is current's following node), then current->next returns 
-        // true, and so we go in here and remove it using temp
         if (current->next) {
             temp = current->next;
             current->next = current->next->next;
@@ -120,8 +106,6 @@ public:
             list_size--;
             return;
         }
-        // now if the current pointer has reached the end of the list (current->next returns false), then that  
-        // means we did not find the item to remove
         else{
             std::cout<<"item not found"<<std::endl;
             return;
@@ -130,13 +114,10 @@ public:
     }
     
     void remove_tail() {
-        // the statement !head returns true if head points to null, in which case list is empty
         if (!head){
             std::cout << "List is empty"<< std::endl;
             return;
         } 
-        // the statement !head->next returns true if there is only one item in list (draw out what a 
-        // single item linked list looks like if you're confused on this)
         if (!head->next){
             delete head;
             head = nullptr;
@@ -144,7 +125,6 @@ public:
             list_size--;
             return;
         }
-        // find second to last node, again, if confusing, draw it out to see process
         Node* current = head;
         while (current->next->next) {
             current = current->next;
@@ -157,7 +137,6 @@ public:
         return;
     }
 
-    // Check if a specific value is present in the list.
     bool contains(const T &value) const {
         Node* current = head;
         while(current){
@@ -169,7 +148,6 @@ public:
         return false;
     }
 
-    // Count the number of occurrences of a specific value in the list.
     int count(const T &value) const {
         if(!head){
             return 0;
@@ -257,9 +235,7 @@ public:
     }
 
     // Remove duplicate elements from the list
-    void remove_duplicates() {
-        
-    }
+    // void remove_duplicates() {}
     // Reverse the order of elements in the list.
     // void reverse() {}
     /*
@@ -282,12 +258,8 @@ public:
         return;
     }
 private:
-    // ----- A Node is the building block for a single-linked list: -----
-    struct Node
-    {
-        // Node data
+    struct Node {
         T data;
-        // Pointer to a node (subsequent node in list)
         Node *next;
 
         // Constructor
