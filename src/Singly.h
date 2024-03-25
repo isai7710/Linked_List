@@ -238,6 +238,10 @@ public:
         return current->data;
     }
 
+    // Remove duplicate elements from the list
+    void remove_duplicates() {
+        
+    }
     // Reverse the order of elements in the list.
     // void reverse() {}
     /*
@@ -245,17 +249,16 @@ public:
     T& front() const: Get a reference to the first element in the list.
     T& back() const: Get a reference to the last element in the list.
     void sort(): Sort the elements in the list.
-    void remove_duplicates(): Remove duplicate elements from the list.
     Singly<T> copy() const: Create a copy of the list.
     bool equals(const Singly<T> &other) const: Compare two lists for equality.
     */
     
     void clear_all() {
-        Node* delete_ptr;
+        Node* node_to_delete;
         while(head){
-            delete_ptr = head;
+            node_to_delete = head;
             head = head->next;
-            delete delete_ptr;
+            delete node_to_delete;
         }
     }
 private:
