@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <string>
 #include "../src/Singly.h"
 
 // SLL = Singly Linked List
@@ -133,4 +134,23 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingBeforeValidItem
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingBeforeInvalidItem_ExpectCorrectSize){
     preBuiltList.insert_before(4, 11);
     EXPECT_EQ(preBuiltList.size(), 3);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenConvertingtoString_ExpectCorrectOrderandMatchingString){
+    EXPECT_EQ(preBuiltList.to_string(), "1 2 3 ");
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAppendingValueandConvertingtoString_ExpectCorrectOrderandMatchingString){
+    preBuiltList.append(5);
+    EXPECT_EQ(preBuiltList.to_string(), "1 2 3 5 ");
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingAfterValidItemAndConvertingtoString_ExpectCorrectOrderandMatchingString){
+    preBuiltList.insert_after(2, 3);
+    EXPECT_EQ(preBuiltList.to_string(), "1 2 3 3 ");
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingBeforeValidItemAndConvertingtoString_ExpectCorrectOrderandMatchingString){
+    preBuiltList.insert_before(2, 3);
+    EXPECT_EQ(preBuiltList.to_string(), "1 3 2 3 ");
 }

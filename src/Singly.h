@@ -218,22 +218,14 @@ public:
         std::cout << "Item '" << value_to_insert_before << "' not found in the list. Insertion failed." << std::endl;
     }
 
-    // TODO: change these to list_to_string functions to better test them
-    void print_list() const {
-        std::cout << "Your list:\n";
+    std::string to_string() {
+        std::stringstream list;
         Node* current = head;
         while (current) {
-            std::cout << current->data << " ";
+            list << current->data << " ";
             current = current->next;
         }
-        std::cout << std::endl;
-    }
-    void print_first_item() const {
-        if (head) {
-            std::cout << "Head points to: " << head->data << std::endl;
-        } else {
-            std::cout << "Head is null, the list is empty." << std::endl;
-        }
+        return list.str();
     }
     
     // Reverse the order of elements in the list.
