@@ -36,7 +36,6 @@ public:
         return !head;
     }
     
-    // Remove and return the last item in the list
     T pop_back() {
         if(!head){
             std::cout << "List is empty" << std::endl;
@@ -137,10 +136,10 @@ public:
         return;
     }
 
-    bool contains(const T &value) const {
+    bool contains(const T &item) const {
         Node* current = head;
         while(current){
-            if(current->data == value){
+            if(current->data == item){
                 return true;
             }
             current = current->next;
@@ -148,32 +147,32 @@ public:
         return false;
     }
 
-    int count(const T &value) const {
+    int count(const T &item) const {
         if(!head){
             return 0;
         }
         Node *current = head;
         int count = 0;
         while(current){
-            if (current->data == value){
+            if (current->data == item){
                 count++;
             }
             current = current->next;
         }
         return count;
     }
-
+    
     // consider the case if there are multiple of the same item we would like to insert after, how would the function parameters differ and would there be any change to the logic?
-    void insert_after(const T &value_to_insert_after, const T &value_to_insert) {
+    void insert_after(const T &item_to_insert_after, const T &item_to_insert) {
         if (!head) {
-            std::cout << "List is empty, value to insert will now be appended as first value in list..." << std::endl;
-            append(value_to_insert);
+            std::cout << "List is empty, item to insert will now be appended as first item in list..." << std::endl;
+            append(item_to_insert);
             return;
         }
         Node* current = head;
         while(current){
-            if (current->data == value_to_insert_after){
-                Node* newNode = new Node(value_to_insert);
+            if (current->data == item_to_insert_after){
+                Node* newNode = new Node(item_to_insert);
                 newNode->next = current->next;
                 current->next = newNode;
 
@@ -182,17 +181,17 @@ public:
             }
             current = current->next;
         }
-        std::cout << "Item '" << value_to_insert_after << "' not found in the list. Insertion failed." << std::endl;
+        std::cout << "Item '" << item_to_insert_after << "' not found in the list. Insertion failed." << std::endl;
     }
 
-    void insert_before(const T &value_to_insert_before, const T &value_to_insert) {
+    void insert_before(const T &item_to_insert_before, const T &item_to_insert) {
         if (!head) {
             std::cout << "List is empty, item to insert will now be appended as first item in list..." << std::endl;
-            append(value_to_insert);
+            append(item_to_insert);
             return;
         }
-        if (head->data == value_to_insert_before) {
-            Node* newNode = new Node(value_to_insert);
+        if (head->data == item_to_insert_before) {
+            Node* newNode = new Node(item_to_insert);
             newNode->next = head;
             head = newNode;
 
@@ -201,8 +200,8 @@ public:
         }
         Node* current = head;
         while (current->next) {
-            if (current->next->data == value_to_insert_before){
-                Node* newNode = new Node(value_to_insert);
+            if (current->next->data == item_to_insert_before){
+                Node* newNode = new Node(item_to_insert);
                 newNode->next = current->next;
                 current->next = newNode;
 
@@ -211,7 +210,7 @@ public:
             }
             current = current->next;
         }
-        std::cout << "Item '" << value_to_insert_before << "' not found in the list. Insertion failed." << std::endl;
+        std::cout << "Item '" << item_to_insert_before << "' not found in the list. Insertion failed." << std::endl;
     }
 
     std::string to_string() {

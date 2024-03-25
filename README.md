@@ -4,7 +4,7 @@ The src directory contains the source code for the Singly and Doubly linked list
 
 ## Singly Linked List Class
 
-The Singly Linked List class provides a simple implementation of a singly linked list data structure in C++. The key points and functions of the Singly Linked List class are summarized below:
+The first linked list data structure to implement was the singly linked list. The key points of this singly linked list implementation are below. 
 
 ### Key Points:
 1. Nodes are the building blocks for linked lists. Each node contains two main components: data, which holds the actual information to be stored, and a next pointer, which references the next node in the sequence. These pointers can be thought of as the "links" of the linked list.
@@ -23,28 +23,26 @@ The Singly Linked List class provides a simple implementation of a singly linked
 
 1. **`append(const T &item_to_append)`**: Appends a new node with the specified item to the end of the list. If the list is empty, the new node becomes the head.
 
-2. **size() const**: Returns the number of nodes in the list by traversing the list and counting each node.
+2. **`size() const`**: Returns the number of nodes in the list by returning the list size variable, a O(1) operation as opposed to iterating and counting all items in list, a O(n) operation. The drawback of this faster operation is the need to update the list size variable in all insert and remove functions.
 
-3. **is_empty() const**: Returns `true` if the list is empty (i.e., `head` is `nullptr`), otherwise `false`.
+3. **`is_empty() const`**: Returns `true` if the list is empty (i.e., `head` is `nullptr`), otherwise returns `false`.
 
-4. **pop_back()**: Removes and returns the last node in the list. Handles cases where the list is empty or contains only one node.
+4. **`pop_back()`**: Removes and returns the last node in the list. Handles cases where the list is empty or contains only one node.
 
-5. **pop_front()**: Removes and returns the first node in the list.
+5. **`pop_front()`**: Removes and returns the first node in the list.
 
-6. **remove_item(const T &item_to_remove)**: Removes the node containing the specified item from the list if found.
+6. **`remove(const T &item_to_remove)`**: Removes the node containing the specified item from the list if found.
 
-7. **remove_tail()**: Removes the last node in the list.
+7. **`remove_tail()`**: Removes the last node in the list.
 
-8. **contains(const T &value) const**: Checks if the specified value is present in the list.
+8. **`contains(const T &item) const`**: Checks if the specified item is present in the list.
 
-9. **count(const T &value) const**: Counts the number of occurrences of a specific value in the list.
+9. **`count(const T &item) const`**: Counts the number of occurrences of a specific item in the list.
 
-10. **insert_after(const T &value_to_insert_after, const T &value_to_insert)**: Inserts a new node with the given value after the specified value in the list.
+10. **`insert_after(const T &item_to_insert_after, const T &item_to_insert)`**: Inserts a new node with the given item after the specified item in the list.
 
-11. **insert_before(const T &value_to_insert_before, const T &value_to_insert)**: Inserts a new node with the given value before the specified value in the list.
+11. **`insert_before(const T &item_to_insert_before, const T &item_to_insert)`**: Inserts a new node with the given item before the specified item in the list.
 
-12. **to_string()**: Converts the items of the list into a string representation.
+12. **`to_string()`**: Converts the items of the list into a string representation.
 
-13. **operator[](int index)**: Accesses elements in the list by index.
-
-Each function provides specific functionality for manipulating and querying the linked list, allowing for flexible usage and efficient management of data.
+13. **`operator[](int index)`**: Accesses elements in the list by index.
