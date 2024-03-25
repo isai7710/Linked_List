@@ -221,20 +221,29 @@ public:
     std::string to_string() {
         std::stringstream list;
         Node* current = head;
-        while (current) {
+        while (current->next) {
             list << current->data << " ";
             current = current->next;
         }
+        list << current->data;
         return list.str();
     }
     
+    // Access elements in the list by index
+    T& operator[](int index) {
+        Node* current = head;
+        for(int i=0; i<index; i++){
+            current = current->next;
+        }
+        return current->data;
+    }
+
     // Reverse the order of elements in the list.
     // void reverse() {}
     /*
     TODO:
     T& front() const: Get a reference to the first element in the list.
     T& back() const: Get a reference to the last element in the list.
-    T& operator[](int index): Access elements in the list by index.
     void sort(): Sort the elements in the list.
     void remove_duplicates(): Remove duplicate elements from the list.
     Singly<T> copy() const: Create a copy of the list.

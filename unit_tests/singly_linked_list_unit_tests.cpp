@@ -11,7 +11,7 @@ class PreBuiltSinglyLinkedList: public testing::Test{
             preBuiltList.append(3);
         }
     protected:
-    Singly<int> preBuiltList;
+        Singly<int> preBuiltList;
 };
 
 TEST(SLLAppendandSize, GivenAListWithOnly1AppendedValue_ReturnCorrectSize){
@@ -137,20 +137,30 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingBeforeInvalidIt
 }
 
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenConvertingtoString_ExpectCorrectOrderandMatchingString){
-    EXPECT_EQ(preBuiltList.to_string(), "1 2 3 ");
+    EXPECT_EQ(preBuiltList.to_string(), "1 2 3");
 }
 
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAppendingValueandConvertingtoString_ExpectCorrectOrderandMatchingString){
     preBuiltList.append(5);
-    EXPECT_EQ(preBuiltList.to_string(), "1 2 3 5 ");
+    EXPECT_EQ(preBuiltList.to_string(), "1 2 3 5");
 }
 
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingAfterValidItemAndConvertingtoString_ExpectCorrectOrderandMatchingString){
     preBuiltList.insert_after(2, 3);
-    EXPECT_EQ(preBuiltList.to_string(), "1 2 3 3 ");
+    EXPECT_EQ(preBuiltList.to_string(), "1 2 3 3");
 }
 
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenInsertingBeforeValidItemAndConvertingtoString_ExpectCorrectOrderandMatchingString){
     preBuiltList.insert_before(2, 3);
-    EXPECT_EQ(preBuiltList.to_string(), "1 3 2 3 ");
+    EXPECT_EQ(preBuiltList.to_string(), "1 3 2 3");
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAccessingElementByIndex_ExpectCorrectAccessedItem){
+    EXPECT_EQ(preBuiltList[1], 2);
+}
+
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAssigningNewValuetoElementByIndex_ExpectCorrectOrderandSize){
+    preBuiltList[0] = 2;
+    EXPECT_EQ(preBuiltList.to_string(), "2 2 3");
+    EXPECT_EQ(preBuiltList.size(), 3);
 }
