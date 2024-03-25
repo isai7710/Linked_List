@@ -1,13 +1,13 @@
 # Linked_List
 This is a Linked List library I've developed to get a better grasp at CMake, Test Driven Development, and the Linked List structure in general (singly and doubly). It was written in a WSL environment on Visual Studio Code using CMake tools. \
-The src directory contains the source code for the Singly and Doubly linked list classes, which are just .h files. Although not shown in this repository (for the sake of simplicity) there must be a directory with the google test framework copied from the appropriate github repository, so that the unit tests in the linked_list_unittest directory work properly. The link to that gtest repository is: https://github.com/google/googletest
+The src directory contains the source code for the Singly and Doubly linked list classes, which are just .h files. Although not shown in this repository (for the sake of simplicity) there must be a directory with the google test framework copied from the appropriate github repository, so that the unit tests in the unit_test directory work properly. The link to that gtest repository is: https://github.com/google/googletest
 
 ## Singly Linked List Class
 
-The first linked list data structure to implement was the singly linked list. The key points of this singly linked list implementation are below. 
+The first linked list data structure to implement was the singly linked list.
 
 ### Key Points:
-1. Nodes are the building blocks for linked lists. Each node contains two main components: data, which holds the actual information to be stored, and a next pointer, which references the next node in the sequence. These pointers can be thought of as the "links" of the linked list.
+1. Nodes are the building blocks for linked lists. Each node in this singly linked list contains two main components: data, which holds the actual information to be stored, and one pointer (hence the 'singly') called next, which references the next node in the sequence. These pointers can be thought of as the single "links" of the linked list.
 
 2. The condition `!head` returns `true` if `head` points to `nullptr`, indicating that the list is empty. 
 
