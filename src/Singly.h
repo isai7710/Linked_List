@@ -97,7 +97,7 @@ public:
         Node* current = head;
         Node* temp;
         //draw this out as well but I will try to explain as best I can here
-        //first check if we've reached the end of the list with the 'current->next expression' if so,
+        //first check if we've reached the end of the list with the 'current->next' expression if so,
         //terminate while loop
         //if we haven't reached the end, then check if current's following node is the node to remove, if it is
         //terminate while loop, we've found the node to remove
