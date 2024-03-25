@@ -224,7 +224,6 @@ public:
         return list.str();
     }
     
-    // Access elements in the list by index
     T& operator[](int index) {
         Node* current = head;
         for(int i=0; i<index; i++){
@@ -237,6 +236,7 @@ public:
     // void remove_duplicates() {}
     // Reverse the order of elements in the list.
     // void reverse() {}
+
     /*
     TODO:
     T& front() const: Get a reference to the first element in the list.
@@ -261,7 +261,6 @@ private:
         T data;
         Node *next;
 
-        // Constructor
         Node(const T &value) : data(value), next(nullptr) {}
     };
 
