@@ -46,3 +46,5 @@ The first linked list data structure to implement was the singly linked list.
 12. **`to_string()`**: Converts the items of the list into a string representation.
 
 13. **`operator[](int index)`**: Accesses elements in the list by index.
+
+I plan on implementing more functions. If you have any feedback, let me konw!
