@@ -7,79 +7,83 @@
 template <typename T>
 class Singly {
 public:
-    Singly() : head(nullptr) {}
+    Singly() : head(nullptr), list_size(0) {}
 
     ~Singly() { clear_all(); }
 
-    void append(const T &append_item) {
-        Node* newNode = new Node(append_item);
-        // returns true if head points to null (list is empty), in which case the item will be the head
+    void append(const T &item_to_append) {
+        Node* new_node = new Node(item_to_append);
+        // the condition "!head" returns true if head points to null (list is empty)
+        // in which case the item to append will be the head
         if (!head){
-            head = newNode;
-        } else {
-            Node* current = head;
-            while (current->next) {
-                current = current->next;
-            }
-            current->next = newNode;
+            head = new_node;
+            list_size++;
+            return;
         }
+        Node* current = head;
+        while (current->next) {
+            current = current->next;
+        }
+        current->next = new_node;
+    
+        list_size++;
+        return;
     }
 
     int size() const {
-        int size = 0;
-        Node* current = head;
-        while(current){
-            current = current->next;
-            size++;
-        }
-        return size;
+        return list_size;
     } 
     
     bool is_empty() const {
-        if(!head) {
-            return true;
-        }
-        return false;
+        return !head;
     }
     
-    //Remove and return the last element.
-    T pop_back(){
+    // Remove and return the last item in the list
+    T pop_back() {
         if(!head){
             std::cout << "List is empty" << std::endl;
+
             return T{};
         }
         if(!head->next){
-            T backValue = head->data;
-            delete head;
+            T pop_back_item = head->data;
+            Node* temp = head;
+            delete temp;
             head = nullptr;
-            return backValue;
+
+            list_size--;
+            return pop_back_item;
         }
         // find second to last node
         Node* current = head;
         while(current->next->next){
             current = current->next;
         }
-        T backValue = current->next->data;
+        T pop_back_item = current->next->data;
         Node* temp = current->next;
         current->next = nullptr;
         delete temp;
 
-        return backValue;
+        list_size--;
+        return pop_back_item;
     }
-    //Remove and return the first element.
+
+    // Remove and return the first item in the list
     T pop_front(){
         if (!head){
             std::cout << "List is empty" << std::endl;
             return T{};
         }
-        Node* nodeToPop = head;
-        T frontValue = head->data;
+        T pop_front_item = head->data;
+        Node* temp = head;
         head = head->next;
-        delete nodeToPop;
-        return frontValue;
+        delete temp;
+
+        list_size--;
+        return pop_front_item;
     }
     
-    void remove_item(const T &item_to_remove) {
+    void remove(const T &item_to_remove) {
         // returns true if head points to null, in which case list is empty
         if (!head) {
             std::cout << "List is empty"<< std::endl;
@@ -91,6 +95,7 @@ public:
             delete head;
             head = temp;
             std::cout << "item removed, twas the first item" << std::endl;
+            list_size--;
             return;
         }
         //
@@ -111,6 +116,8 @@ public:
             current->next = current->next->next;
             delete temp;
             std::cout << "item removed" << std::endl;
+
+            list_size--;
             return;
         }
         // now if the current pointer has reached the end of the list (current->next returns false), then that  
@@ -133,6 +140,8 @@ public:
         if (!head->next){
             delete head;
             head = nullptr;
+
+            list_size--;
             return;
         }
         // find second to last node, again, if confusing, draw it out to see process
@@ -143,6 +152,9 @@ public:
 
         delete current->next;
         current->next = nullptr;
+
+        list_size--;
+        return;
     }
 
     // Check if a specific value is present in the list.
@@ -186,6 +198,8 @@ public:
                 Node* newNode = new Node(value_to_insert);
                 newNode->next = current->next;
                 current->next = newNode;
+
+                list_size++;
                 return;
             }
             current = current->next;
@@ -203,6 +217,8 @@ public:
             Node* newNode = new Node(value_to_insert);
             newNode->next = head;
             head = newNode;
+
+            list_size++;
             return;
         }
         Node* current = head;
@@ -211,6 +227,8 @@ public:
                 Node* newNode = new Node(value_to_insert);
                 newNode->next = current->next;
                 current->next = newNode;
+
+                list_size++;
                 return;
             }
             current = current->next;
@@ -260,9 +278,11 @@ public:
             head = head->next;
             delete node_to_delete;
         }
+        list_size = 0;
+        return;
     }
 private:
-    //----A Node is the building block for a single-linked list
+    // ----- A Node is the building block for a single-linked list: -----
     struct Node
     {
         // Node data
@@ -275,5 +295,6 @@ private:
     };
 
     Node* head;
+    int list_size;
 };
 #endif

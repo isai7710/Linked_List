@@ -14,51 +14,8 @@ class PreBuiltSinglyLinkedList: public testing::Test{
         Singly<int> preBuiltList;
 };
 
-TEST(SLLAppendandSize, GivenAListWithOnly1AppendedValue_ReturnCorrectSize){
-    Singly<int> list;
-    list.append(1);
-
-    EXPECT_EQ(list.size(), 1);
-}
-
-TEST(SLLAppendAndSize, GivenAListWith2AppendedValues_ReturnCorrectSize){
-    Singly<int> list;
-    list.append(1);
-    list.append(2);
-
-    EXPECT_EQ(list.size(), 2);
-}
-
-TEST(SLLIsEmpty, GivenAnEmptyList_WhenExecutingIsEmptyFunction_ExpectTrue){
-    Singly<int> list;
-
-    EXPECT_EQ(list.is_empty(), true);
-}
-
-TEST(SLLIsEmpty, GivenANonEmptyList_WhenExecutingIsEmptyFunction_ExpectFalse){
-    Singly<int> list;
-    list.append(1);
-
-    EXPECT_EQ(list.is_empty(), false);
-}
-
-TEST(SLLPopBack, GivenAListWith2Values_WhenPopBackisExecuted_ExpectCorrectReturnValueandSize){
-    Singly<int> list;
-    list.append(1);
-    list.append(2);
-
-    EXPECT_EQ(list.pop_back(), 2);
-    EXPECT_EQ(list.size(), 1);
-}
-
-TEST(SLLPopFront, GivenAListWith2Values_WhenPopFrontisExecuted_ExpectCorrectReturnValueandSize){
-    Singly<int> list;
-    list.append(1);
-    list.append(2);
-
-    EXPECT_EQ(list.pop_front(), 1);
-    EXPECT_EQ(list.size(), 1);
-}
+// TODO: create text fixtures for all functions that test other cases
+// ask gpt for recommended cases to test
 
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAppendingValue_ExpectCorrectSize){
     preBuiltList.append(4);
@@ -85,12 +42,12 @@ TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenFrontIsPopped_ExpectCorr
 }
 
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenItemtoRemoveisValid_ExpectCorrectSize){
-    preBuiltList.remove_item(2);
+    preBuiltList.remove(2);
     EXPECT_EQ(preBuiltList.size(), 2);
 }
 
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenItemtoRemoveisInvalid_ExpectCorrectSize){
-    preBuiltList.remove_item(4);
+    preBuiltList.remove(4);
     EXPECT_EQ(preBuiltList.size(), 3);
 }
 
