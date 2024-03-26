@@ -14,17 +14,30 @@ class PreBuiltSinglyLinkedList: public testing::Test{
         Singly<int> preBuiltList;
 };
 
-// TODO: create text fixtures for all functions that test other cases
-// ask gpt for recommended cases to test
-
-TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAppendingValue_ExpectCorrectSize){
+// append()
+TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenAppendingValue_ExpectCorrectSizeAndContent){
     preBuiltList.append(4);
     EXPECT_EQ(preBuiltList.size(), 4);
+    EXPECT_EQ(preBuiltList[3], 4);
 }
 
+TEST(AppendTest, GivenEmptyLinkedList_WhenAppendingValue_ExpectCorrectSizeAndContent){
+    Singly<int> list;
+    list.append(1);
+    EXPECT_EQ(list.size(), 1);
+    EXPECT_EQ(list[0], 1);
+}
+
+// size()
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenCheckingSize_ExpectCorrectValue){
     EXPECT_EQ(preBuiltList.size(), 3);
 }
+
+TEST(ListSizeTest, GivenAnEmptyList_WhenCheckingSize_ExpectCorrectValue){
+    Singly<int> list;
+    EXPECT_EQ(list.size(), 0);
+}
+
 
 TEST_F(PreBuiltSinglyLinkedList, GivenAPreBuiltList_WhenExecutingClearAll_ExpectIsEmptyToBeTrue){
     preBuiltList.clear_all();
