@@ -1,5 +1,5 @@
 # Linked_List
-This is a Linked List library I've developed to get a better grasp at CMake, Test Driven Development, and the Linked List structure in general (singly and doubly). It was written in a WSL environment on Visual Studio Code using CMake tools. \
+This is a Linked List class I've developed to get a better grasp at using CMake tools, Test Driven Development, and the Linked List structure in general (for both singly and doubly linked lists). It was written in a WSL environment on Visual Studio Code using CMake tools. \
 The src directory contains the source code for the Singly and Doubly linked list classes, which are just .h files. Although not shown in this repository (for the sake of simplicity) there must be a directory with the google test framework copied from the appropriate github repository, so that the unit tests in the unit_test directory work properly. The link to that gtest repository is: https://github.com/google/googletest
 
 ## Singly Linked List Class
