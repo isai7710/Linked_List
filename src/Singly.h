@@ -2,7 +2,7 @@
 #define SINGLY_H
 
 #include <iostream>
-#include <string>
+#include <sstream>
 
 template <typename T>
 class Singly {
