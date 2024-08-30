@@ -1,6 +1,9 @@
 # Ignore build directory
 /build/
 
+# Ignore clangd cache
+.cache/
+
 # Ignore external/googletest directory
 /external/googletest/
 
